@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title></title>
+	<h:outputScript library="js" name="jquery-3.3.1.js" />
+	<h:outputScript library="js" name="monJS.js" />
+	<h:outputStylesheet library="css" name="monCSS.css" />
+
+</h:head>
+
+<h:body>
+
+	<div class="headerStyle">
+		<ui:insert name="monHeader">
+			<ui:include src="/templates/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<h:form>
+		<p:growl globalOnly="true" showDetail="flase" life="3500"></p:growl>
+		<p:menubar styleClass="menubar">
+
+			<p:menuitem styleClass="menuitem" value="Accueil"
+				action="#{paMB.afficherAccueil}" id="acc" />
+
+			<p:menuitem styleClass="menuitem" value="Liste Articles"
+				action="#{pMB.affichAllProduits}" id="prd" />
+
+			<p:menuitem styleClass="menuitem" value="Espace Client"
+				action="#{clMB.loginLinkClient}" id="cli" />
+
+			<p:menuitem styleClass="menuitem" value="Espace Admin"
+				url="loginAdmin.xhtml" id="adm" />
+
+			<p:menuitem styleClass="menuitem" value="Déconnexion"
+				action="#{clMB.deconnexion}" id="deco" />
+
+			<f:facet name="categories">
+				<p:selectOneMenu value="#{caMB.categorie.idCategorie}">
+					<f:selectItems value="#{caMB.listeCategories}" var="cat"
+						itemLabel="#{cat.nom}" itemValue="#{cat.idCategorie}" />
+				</p:selectOneMenu>
+			</f:facet>
+			<p:menuitem id="searchbar" styleClass="searchbarStyle">
+				<p:inputText value="#{pMB.saisie}"
+					placeholder="Rechercher un produit" />
+				<h:commandLink action="#{pMB.getProductbySaisie}" id="loupe" styleClass="loupeStyle">
+					<h:graphicImage library="images" name="Search_26px.png" />
+				</h:commandLink>
+			</p:menuitem>
+		</p:menubar>
+
+	</h:form>
+
+	<br></br>
+
+	<div class="bodyStyle">
+		<ui:insert name="monBody">
+			<ui:include src="/templates/body.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+	<br></br>
+	<div class="footerStyle">
+		<ui:insert name="monFooter">
+			<ui:include src="/templates/footer.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+</h:body>
+</html>

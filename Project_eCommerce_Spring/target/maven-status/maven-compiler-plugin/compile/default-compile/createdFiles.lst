@@ -1,0 +1,7 @@
+fr\adaming\model\Commande.class
+fr\adaming\model\LigneCommande.class
+fr\adaming\model\Admin.class
+fr\adaming\model\Panier.class
+fr\adaming\model\Categorie.class
+fr\adaming\model\Produit.class
+fr\adaming\model\Client.class

@@ -1,3 +1,9 @@
+.boutonStyle{
+	
+	padding:5px;
+	border-radius: 8px;
+}
+
 .bodyStyle {
 	margin-left: 60px;
 	margin-right: 60px;
@@ -15,19 +21,19 @@
 
 .image {
 	width: 60px;
-	height:60px;
+	height: 60px;
 	border-radius: 10%;
 }
 
 .image2 {
 	width: 150px;
-	height:150px;
+	height: 150px;
 	border-radius: 10%;
 }
 
 .image3 {
 	width: 300px;
-	height:300px;
+	height: 300px;
 	border-radius: 10%;
 }
 
@@ -71,22 +77,6 @@
 		color: DarkBlue;
 		font-size: 100%;
 	}
-	.loupeStyle {
-		position: relative !important;
-	}
-	.searchbarStyle {
-		position: relative !important;
-	}
-}
-
-.searchbarStyle {
-	position: relative !important;
-	left: 190% !important;
-}
-
-.loupeStyle {
-	position: relative !important;
-	left: 183% !important;
 }
 
 .logo {

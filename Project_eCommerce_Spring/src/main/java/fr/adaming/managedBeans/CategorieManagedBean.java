@@ -59,11 +59,11 @@ public class CategorieManagedBean implements Serializable {
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		this.categorie = new Categorie();
 		this.listeCategories = caService.getAllCategory();
-//
-//		for (Categorie ca : listeCategories) {
-//			List<Produit> liste = prService.getProductbyCategory(ca);
-//			ca.setListeProduits(liste);
-//		}
+
+		for (Categorie ca : listeCategories) {
+			List<Produit> liste = prService.getProductbyCategory(ca);
+			ca.setListeProduits(liste);
+		}
 
 	}
 

@@ -86,6 +86,8 @@
 							<h:outputText value="Stock : #{sessionScope.prSession.quantite}" />
 							<br />
 							<h:outputText value="Prix : #{sessionScope.prSession.prix}€" />
+							<br />
+							<a href="#{sessionScope.prSession.lien}" target="blank" title="Plus de détails">#{sessionScope.prSession.lien}</a>
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton image="resources/images/addProduit.png"

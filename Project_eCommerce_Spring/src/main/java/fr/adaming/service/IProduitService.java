@@ -31,8 +31,13 @@ public interface IProduitService {
 	public List<Produit> getProductbyCatAndString(String saisie, Categorie ca);
 
 	public List<Produit> getProductbyClAndString(String saisie, Client cl);
-	
-	public List<Produit> getAllProducts();
 
+	public List<Produit> getProductbySaisieDouble(String saisie, double d1, double d2);
+
+	public List<Produit> getProductbyCatDouble(double d1, double d2, Categorie ca);
+
+	public List<Produit> getProductbyCatSaisieDouble(double d1, double d2, String saisie, Categorie ca);
+
+	public List<Produit> getAllProducts();
 
 }

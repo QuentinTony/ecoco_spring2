@@ -29,7 +29,7 @@
 Designation : <h:inputText value="#{pMB.produit.designation}" />
 					<br />
 					<br />
-Description : <h:inputText value="#{pMB.produit.description}" />
+Description : <h:inputTextarea value="#{pMB.produit.description}" />
 					<br />
 					<br />
 Prix :<p:inputText value="#{pMB.produit.prix}" />
@@ -43,8 +43,12 @@ Image : <p:fileUpload id="image" value="#{pMB.file}" mode="simple"
 						skinSimple="true" />
 					<br />
 					<br />
+				
+				Lien (facultatif) : <h:inputText value="#{pMB.produit.lien}" />
+					<br />
+					<br />
 					
-Caétgorie : <h:selectOneMenu value="#{pMB.categorie.idCategorie}">
+Catégorie : <h:selectOneMenu value="#{pMB.categorie.idCategorie}">
 						<f:selectItems value="#{caMB.listeCategories}" var="ca"
 							itemLabel="#{ca.nomCategorie}" itemValue="#{ca.idCategorie}" />
 
@@ -57,8 +61,8 @@ Caétgorie : <h:selectOneMenu value="#{pMB.categorie.idCategorie}">
 						action="#{pMB.addProduct}" style="margin-right:20px" ajax="false"
 						update="growl" />
 				</p:fieldset>
-				<br/>
-				<br/>
+				<br />
+				<br />
 				<p:commandButton value="Retour à votre espace client"
 					action="#{pMB.espaceclient}"
 					style="margin-right:20px; position:relative; left:37.5%; width:25%"

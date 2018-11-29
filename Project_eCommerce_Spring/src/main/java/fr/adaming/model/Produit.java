@@ -31,6 +31,7 @@ public class Produit {
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
+	private String lien;
 	@Lob
 	private byte[] photo;
 	@Transient
@@ -49,24 +50,26 @@ public class Produit {
 	private Client client;
 
 	// constructeurs vides
+
 	public Produit() {
 		super();
 	}
 
-	// -id
-	public Produit(String designation, String description, double prix, int quantite, boolean selectionne) {
+	public Produit(String designation, String description, double prix, int quantite, boolean selectionne, String lien,
+			byte[] photo, String image) {
 		super();
 		this.designation = designation;
 		this.description = description;
 		this.prix = prix;
 		this.quantite = quantite;
 		this.selectionne = selectionne;
-
+		this.lien = lien;
+		this.photo = photo;
+		this.image = image;
 	}
 
-	// +id
 	public Produit(long idProduit, String designation, String description, double prix, int quantite,
-			boolean selectionne) {
+			boolean selectionne, String lien, byte[] photo, String image) {
 		super();
 		this.idProduit = idProduit;
 		this.designation = designation;
@@ -74,7 +77,9 @@ public class Produit {
 		this.prix = prix;
 		this.quantite = quantite;
 		this.selectionne = selectionne;
-
+		this.lien = lien;
+		this.photo = photo;
+		this.image = image;
 	}
 
 	// getters et setters
@@ -108,6 +113,14 @@ public class Produit {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
+	}
+
+	public String getLien() {
+		return lien;
+	}
+
+	public void setLien(String lien) {
+		this.lien = lien;
 	}
 
 	public int getQuantite() {
@@ -177,7 +190,7 @@ public class Produit {
 	public boolean equalObjet(Object obj) {
 
 		return (obj instanceof Produit) && ((Produit) obj).getDesignation().equals(designation)
-				&& ((Produit) obj).getDescription().equals(description)&&((Produit) obj).getPrix()==prix;
+				&& ((Produit) obj).getDescription().equals(description) && ((Produit) obj).getPrix() == prix;
 	}
 
 }

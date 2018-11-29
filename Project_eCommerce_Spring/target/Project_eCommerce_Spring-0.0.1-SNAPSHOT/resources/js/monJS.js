@@ -13,3 +13,9 @@ function animImgPanier1(){
 	
 	$('#togglePanier').width('26px');
 }
+
+function toggleCat(){
+	
+	$('#cat').toggle();
+	
+}

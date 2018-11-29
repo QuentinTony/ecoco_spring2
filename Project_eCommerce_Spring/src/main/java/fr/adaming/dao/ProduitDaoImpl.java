@@ -39,8 +39,8 @@ public class ProduitDaoImpl implements IProduitDao {
 		Query query = s.createQuery(req);
 		query.setParameter("pIdcl", cl.getId());
 		List<Produit> liste = query.list();
-		
-		for(Produit p : liste) {
+
+		for (Produit p : liste) {
 			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
 		}
 		return liste;
@@ -69,13 +69,14 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public int updateProduit(Produit p) {
 		Session s = sf.getCurrentSession();
-		String req = "UPDATE Produit p SET p.designation=:pDesignation, p.description=:pDescription, p.prix=:pPrix, p.quantite=:pQuantite, p.photo=:pPhoto WHERE p.idProduit=:pIdProduit";
+		String req = "UPDATE Produit p SET p.designation=:pDesignation, p.description=:pDescription, p.prix=:pPrix, p.quantite=:pQuantite, p.photo=:pPhoto,p.lien=:pLien WHERE p.idProduit=:pIdProduit";
 		Query query = s.createQuery(req);
 		query.setParameter("pDesignation", p.getDesignation());
 		query.setParameter("pDescription", p.getDescription());
 		query.setParameter("pPrix", p.getPrix());
 		query.setParameter("pQuantite", p.getQuantite());
 		query.setParameter("pPhoto", p.getPhoto());
+		query.setParameter("pLien", p.getLien());
 		query.setParameter("pIdProduit", p.getIdProduit());
 		return query.executeUpdate();
 	}
@@ -115,7 +116,7 @@ public class ProduitDaoImpl implements IProduitDao {
 			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
 		}
 		return liste;
-		
+
 	}
 
 	@Override
@@ -150,11 +151,76 @@ public class ProduitDaoImpl implements IProduitDao {
 		String req = "SELECT p FROM Produit p ";
 		Query query = s.createQuery(req);
 		List<Produit> liste = query.list();
-		
+
 		for (Produit p : liste) {
 			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
 		}
 		return liste;
+	}
+
+	@Override
+	public List<Produit> getProductbySaisieDouble(String saisie, double d1, double d2) {
+
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Produit as p WHERE p.designation LIKE :pSaisie AND p.prix BETWEEN :pD1 AND :pD2";
+
+		Query query = s.createQuery(req);
+		query.setParameter("pSaisie", "%" + saisie + "%");
+		query.setParameter("pD1", d1);
+		query.setParameter("pD2", d2);
+
+		List<Produit> liste = query.list();
+
+		for (Produit p : liste) {
+			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
+		}
+
+		return liste;
+	}
+
+	@Override
+	public List<Produit> getProductbyCatDouble(double d1, double d2, Categorie ca) {
+
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Produit as p WHERE p.categorie.idCategorie =:pIdca AND p.prix BETWEEN :pD1 AND :pD2";
+
+		Query query = s.createQuery(req);
+		query.setParameter("pIdca", ca.getIdCategorie());
+		query.setParameter("pD1", d1);
+		query.setParameter("pD2", d2);
+
+		List<Produit> liste = query.list();
+
+		for (Produit p : liste) {
+			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
+		}
+
+		return liste;
+	}
+
+	@Override
+	public List<Produit> getProductbyCatSaisieDouble(double d1, double d2, String saisie, Categorie ca) {
+
+		Session s = sf.getCurrentSession();
+
+		String req = "FROM Produit as p WHERE p.designation LIKE :pNom AND p.categorie.idCategorie =:pIdca AND p.prix BETWEEN :pD1 AND :pD2";
+
+		Query query = s.createQuery(req);
+		query.setParameter("pNom", "%" + saisie + "%");
+		query.setParameter("pIdca", ca.getIdCategorie());
+		query.setParameter("pD1", d1);
+		query.setParameter("pD2", d2);
+
+		List<Produit> liste = query.list();
+
+		for (Produit p : liste) {
+			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
+		}
+
+		return liste;
+
 	}
 
 }

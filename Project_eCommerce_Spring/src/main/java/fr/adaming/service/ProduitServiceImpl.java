@@ -62,6 +62,7 @@ public class ProduitServiceImpl implements IProduitService {
 		pOut.setDesignation(p.getDesignation());
 		pOut.setPrix(p.getPrix());
 		pOut.setPhoto(p.getPhoto());
+		pOut.setLien(p.getLien());
 		pOut.setQuantite(p.getQuantite());
 		pOut.setClient(cl);
 		pOut.setCategorie(cat);
@@ -111,6 +112,24 @@ public class ProduitServiceImpl implements IProduitService {
 	@Override
 	public List<Produit> getAllProducts() {
 			return pDao.getAllProducts();
+	}
+
+	@Override
+	public List<Produit> getProductbySaisieDouble(String saisie, double d1, double d2) {
+		
+		return pDao.getProductbySaisieDouble(saisie, d1, d2);
+	}
+
+	@Override
+	public List<Produit> getProductbyCatDouble(double d1, double d2, Categorie ca) {
+		
+		return pDao.getProductbyCatDouble(d1, d2, ca);
+	}
+
+	@Override
+	public List<Produit> getProductbyCatSaisieDouble(double d1, double d2, String saisie, Categorie ca) {
+		
+		return pDao.getProductbyCatSaisieDouble(d1, d2, saisie, ca);
 	}
 
 }

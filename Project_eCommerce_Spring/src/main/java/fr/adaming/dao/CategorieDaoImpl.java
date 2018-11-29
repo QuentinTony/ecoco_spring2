@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
 import org.apache.commons.codec.binary.Base64;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -39,8 +38,8 @@ public class CategorieDaoImpl implements ICategorieDao {
 		Session s = sf.getCurrentSession();
 		String req = "SELECT ca FROM Categorie ca ";
 		Query query = s.createQuery(req);
-		List<Categorie> listeCategorie =query.list();
-		for (Categorie ca :listeCategorie) {
+		List<Categorie> listeCategorie = query.list();
+		for (Categorie ca : listeCategorie) {
 			ca.setImage("data:image/png;base64," + Base64.encodeBase64String(ca.getPhoto()));
 		}
 		return listeCategorie;
@@ -62,8 +61,14 @@ public class CategorieDaoImpl implements ICategorieDao {
 	public Categorie getCategory(Categorie ca) {
 		Session s = sf.getCurrentSession();
 		Categorie caOut = (Categorie) s.get(Categorie.class, ca.getIdCategorie());
-		caOut.setImage("data:image/png;base64," + Base64.encodeBase64String(ca.getPhoto()));
-		return caOut;	}
+		try {
+			caOut.setImage("data:image/png;base64," + Base64.encodeBase64String(ca.getPhoto()));
+			return caOut;
+		}catch (Exception ex) {
+			return null;
+		}
+		
+	}
 
 	@Override
 	public int updateCategory(Categorie ca) {

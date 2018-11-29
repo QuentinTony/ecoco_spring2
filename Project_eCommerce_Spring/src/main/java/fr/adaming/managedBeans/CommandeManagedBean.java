@@ -32,36 +32,36 @@ public class CommandeManagedBean implements Serializable {
 
 	// association UML
 
-	@ManagedProperty(value="#{clService}")
+	@ManagedProperty(value = "#{clService}")
 	private IClientService clService;
 
-	@ManagedProperty(value="#{coService}")
+	@ManagedProperty(value = "#{coService}")
 	private ICommandeService coService;
 
-	@ManagedProperty(value="#{lcService}")
+	@ManagedProperty(value = "#{lcService}")
 	private ILigneCommandeService lcService;
 
-	@ManagedProperty(value="#{prService}")
+	@ManagedProperty(value = "#{prService}")
 	private IProduitService prService;
 
 	// setters obligatoires
-	
-	public IClientService getClService() {
-		return clService;
+
+	public void setClService(IClientService clService) {
+		this.clService = clService;
 	}
 
-	public ICommandeService getCoService() {
-		return coService;
+	public void setCoService(ICommandeService coService) {
+		this.coService = coService;
 	}
 
-	public ILigneCommandeService getLcService() {
-		return lcService;
+	public void setLcService(ILigneCommandeService lcService) {
+		this.lcService = lcService;
 	}
 
-	public IProduitService getPrService() {
-		return prService;
+	public void setPrService(IProduitService prService) {
+		this.prService = prService;
 	}
-	
+
 	// attribut
 
 	private Commande commande;
@@ -134,13 +134,13 @@ public class CommandeManagedBean implements Serializable {
 	}
 
 	public String passerCommande1() {
-		
+
 		Client clOut = (Client) maSession.getAttribute("clSession");
-		
-		if(clOut!=null) {
+
+		if (clOut != null) {
 			return "afficherRecapCommande";
 		}
-		
+
 		return "loginClientAchat";
 	}
 
@@ -161,9 +161,9 @@ public class CommandeManagedBean implements Serializable {
 	}
 
 	public String passerCommande() {
-		
+
 		Client clOut = (Client) maSession.getAttribute("clSession");
-		
+
 		// instanciation de la nouvelle commande ac la date du jour
 		commande = new Commande(new Date());
 		// ajout de la commande à la BD

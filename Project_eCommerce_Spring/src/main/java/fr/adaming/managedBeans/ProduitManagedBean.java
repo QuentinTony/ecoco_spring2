@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -38,6 +39,7 @@ public class ProduitManagedBean implements Serializable {
 	private String saisie;
 	private double prix1;
 	private double prix2;
+	private boolean indice;
 	private List<Produit> listeProduit;
 
 	// constructeur vide
@@ -97,6 +99,14 @@ public class ProduitManagedBean implements Serializable {
 
 	public void setSaisie(String saisie) {
 		this.saisie = saisie;
+	}
+
+	public boolean isIndice() {
+		return indice;
+	}
+
+	public void setIndice(boolean indice) {
+		this.indice = indice;
 	}
 
 	public List<Produit> getListeProduit() {
@@ -283,5 +293,11 @@ public class ProduitManagedBean implements Serializable {
 
 		}
 	}
+	
+	public String checker() {
+		System.out.println("check OK");
+				return "rechercheAvancee";
+	}
+	
 
 }

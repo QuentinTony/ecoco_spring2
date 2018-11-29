@@ -31,6 +31,9 @@
 			<p:menuitem styleClass="menuitem" value="Liste Articles"
 				action="#{pMB.affichAllProduits}" id="prd" />
 
+			<p:menuitem styleClass="menuitem" value="Recherche Avancée"
+				url="rechercheAvancee.xhtml" id="rech" />
+				
 			<p:menuitem styleClass="menuitem" value="Espace Client"
 				action="#{clMB.loginLinkClient}" id="cli" />
 
@@ -49,7 +52,8 @@
 			<p:menuitem id="searchbar" styleClass="searchbarStyle">
 				<p:inputText value="#{pMB.saisie}"
 					placeholder="Rechercher un produit" />
-				<h:commandLink action="#{pMB.getProductbySaisie}" id="loupe" styleClass="loupeStyle">
+				<h:commandLink action="#{pMB.getProductbySaisie}" id="loupe"
+					styleClass="loupeStyle">
 					<h:graphicImage library="images" name="Search_26px.png" />
 				</h:commandLink>
 			</p:menuitem>

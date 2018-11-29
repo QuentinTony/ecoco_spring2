@@ -28,6 +28,8 @@ public class AdminDaoImpl implements IAdminDao {
 		String req = "FROM Admin as a WHERE a.mail=:pMail AND a.mdp=:pMdp";
 		
 		Query query = s.createQuery(req);
+		query.setParameter("pMail", a.getMail());
+		query.setParameter("pMdp", a.getMdp());
 		
 		return (Admin) query.uniqueResult();
 	}

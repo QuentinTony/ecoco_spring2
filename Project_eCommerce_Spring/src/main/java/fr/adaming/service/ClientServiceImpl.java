@@ -23,32 +23,41 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public int deleteClient(Client cl) {
-		// TODO Auto-generated method stub
-		return 0;
+		Client clOut = this.getClient(cl);
+
+		return clDao.deleteClient(clOut);
+
 	}
 
 	@Override
 	public int updateClient(Client cl) {
-		// TODO Auto-generated method stub
-		return 0;
+		Client clOut = this.getClient(cl);
+		clOut.setId(cl.getId());
+		clOut.setAdresse(cl.getAdresse());
+//		clOut.setListeCommandes(cl.getListeCommandes());
+		clOut.setMail(cl.getMail());
+		clOut.setMdp(cl.getMdp());
+		clOut.setNom(cl.getNom());
+		clOut.setTel(cl.getTel());
+		
+		return clDao.updateClient(clOut);
 	}
 
 	@Override
 	public Client getClient(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		return clDao.getClient(cl);
 	}
 
 	@Override
 	public Client isExist(Client cl) {
 		// TODO Auto-generated method stub
-		return null;
+		return clDao.isExist(cl);
 	}
 
 	@Override
 	public Client addClient(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		return clDao.addClient(cl);
+
 	}
 
 

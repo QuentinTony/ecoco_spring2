@@ -25,32 +25,32 @@ public class CategorieServiceImpl implements ICategorieService {
 
 	@Override
 	public Categorie addCategory(Categorie ca) {
-		// TODO Auto-generated method stub
-		return null;
+		return caDao.addCategory(ca);
 	}
 
 	@Override
 	public List<Categorie> getAllCategory() {
-		// TODO Auto-generated method stub
-		return null;
+		return caDao.getAllCategory();
 	}
 
 	@Override
 	public int deleteCategory(Categorie ca) {
-		// TODO Auto-generated method stub
-		return 0;
+		return caDao.deleteCategory(ca);
 	}
 
 	@Override
 	public Categorie getCategory(Categorie ca) {
-		// TODO Auto-generated method stub
-		return null;
+		return caDao.getCategory(ca);
 	}
 
 	@Override
 	public int updateCategory(Categorie ca) {
-		// TODO Auto-generated method stub
-		return 0;
+		Categorie caOut = this.getCategory(ca);
+		caOut.setDescription(ca.getDescription());
+		caOut.setNomCategorie(ca.getNomCategorie());
+		caOut.setPhoto(ca.getPhoto());
+		
+		return caDao.updateCategory(caOut);
 	}
 
 }

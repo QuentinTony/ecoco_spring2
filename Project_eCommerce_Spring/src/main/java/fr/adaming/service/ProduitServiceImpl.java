@@ -11,14 +11,14 @@ import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
-@Service(value="prService")
+@Service(value = "prService")
 @Transactional
 public class ProduitServiceImpl implements IProduitService {
 
 	// transformation de l'association UML en Java
 	@Autowired
 	public IProduitDao pDao;
-	
+
 	// setter
 
 	public void setpDao(IProduitDao pDao) {
@@ -27,82 +27,90 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public Produit addProduct(Produit p, Client cl, Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
+		p.setCategorie(cat);
+		p.setClient(cl);
+		return pDao.addProduct(p);
 	}
 
 	@Override
 	public List<Produit> getProductbyClient(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyClient(cl);
+
 	}
 
 	@Override
 	public int deleteProduct(Produit p, Client cl) {
-		// TODO Auto-generated method stub
-		return 0;
+		p.setClient(cl);
+		return pDao.deleteProduct(p);
 	}
 
 	@Override
 	public Produit getProduit(Produit p, Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		p.setClient(cl);
+		return pDao.getProduit(p);
 	}
 
 	@Override
 	public Produit getProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProduit(p);
 	}
 
 	@Override
 	public int updateProduit(Produit p, Client cl, Categorie cat) {
-		// TODO Auto-generated method stub
-		return 0;
+		Produit pOut = this.getProduit(p);
+		pOut.setDescription(p.getDescription());
+		pOut.setDesignation(p.getDesignation());
+		pOut.setPrix(p.getPrix());
+		pOut.setPhoto(p.getPhoto());
+		pOut.setQuantite(p.getQuantite());
+		pOut.setClient(cl);
+		pOut.setCategorie(cat);
+		return pDao.updateProduit(pOut);
 	}
 
 	@Override
 	public int updateProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return 0;
+		Produit pOut = this.getProduit(p);
+		pOut.setDescription(p.getDescription());
+		pOut.setDesignation(p.getDesignation());
+		pOut.setPrix(p.getPrix());
+		pOut.setPhoto(p.getPhoto());
+		pOut.setQuantite(p.getQuantite());
+		return pDao.updateProduit(pOut);
 	}
 
 	@Override
 	public List<Produit> getProductbyCategory(Categorie ca) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyCategory(ca);
+
 	}
 
 	@Override
 	public List<Produit> getProductbyString(String saisie) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyString(saisie);
+
 	}
 
 	@Override
 	public List<Produit> getProductbyDouble(double d1, double d2) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyDouble(d1, d2);
 	}
 
 	@Override
 	public List<Produit> getProductbyCatAndString(String saisie, Categorie ca) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyCatAndString(saisie, ca);
+
 	}
 
 	@Override
 	public List<Produit> getProductbyClAndString(String saisie, Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		return pDao.getProductbyClAndString(saisie, cl);
+
 	}
 
 	@Override
 	public List<Produit> getAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+			return pDao.getAllProducts();
 	}
-
-	
 
 }

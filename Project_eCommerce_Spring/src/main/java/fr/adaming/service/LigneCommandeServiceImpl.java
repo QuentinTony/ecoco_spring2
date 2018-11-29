@@ -27,8 +27,8 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService{
 
 	@Override
 	public LigneCommande addLigneCommande(LigneCommande lc, Commande co) {
-		// TODO Auto-generated method stub
-		return null;
+		lc.setCommande(co);
+		return lcDao.addLigneCommande(lc);
 	}
 
 	@Override
@@ -51,8 +51,8 @@ public class LigneCommandeServiceImpl implements ILigneCommandeService{
 
 	@Override
 	public List<LigneCommande> getAllLigneCommande(Commande co) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return lcDao.getAllLigneCommande(co);
 	}
 	
 

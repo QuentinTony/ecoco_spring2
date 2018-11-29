@@ -2,6 +2,8 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,8 +25,12 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 
 	@Override
 	public LigneCommande addLigneCommande(LigneCommande lc) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session s = sf.getCurrentSession();
+		
+		s.save(lc);
+		
+		return lc;
 	}
 
 	@Override
@@ -47,8 +53,15 @@ public class LigneCommandeDaoImpl implements ILigneCommandeDao {
 
 	@Override
 	public List<LigneCommande> getAllLigneCommande(Commande co) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session s = sf.getCurrentSession();
+		
+		String req = "FROM LigneCommande as lc WHERE lc.commande.id=:pIdco";
+		
+		Query query = s.createQuery(req);
+		query.setParameter("pIdco", co.getId());
+		
+		return query.list();
 	}
 
 }

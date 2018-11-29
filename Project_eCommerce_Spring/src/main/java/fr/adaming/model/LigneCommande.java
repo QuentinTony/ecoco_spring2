@@ -35,23 +35,19 @@ public class LigneCommande {
 
 	// constructeurs
 
-	public LigneCommande(long id, String nomProduit, int quantite, double prix, Produit produit, Commande commande) {
+	public LigneCommande(long id, String nomProduit, int quantite, double prix) {
 		super();
 		this.id = id;
 		this.nomProduit = nomProduit;
 		this.quantite = quantite;
 		this.prix = prix;
-		this.produit = produit;
-		this.commande = commande;
 	}
 
-	public LigneCommande(String nomProduit, int quantite, double prix, Produit produit, Commande commande) {
+	public LigneCommande(String nomProduit, int quantite, double prix) {
 		super();
 		this.nomProduit = nomProduit;
 		this.quantite = quantite;
 		this.prix = prix;
-		this.produit = produit;
-		this.commande = commande;
 	}
 
 	public LigneCommande() {

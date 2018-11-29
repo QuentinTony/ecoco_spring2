@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title></title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+
+		<ui:define name="monHeader">
+			<ui:insert>
+				<ui:include src="/templates/header.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+		<ui:define name="monBody">
+			<h:form>
+				<p:commandButton value="Ajouter une catégorie"
+					action="#{caMB.addLinkCategory}" style="margin-right:20px;" />
+					<br/>
+					<br/>
+				<p:dataTable var="ca" value="#{caMB.listeCategories}">
+					<p:column headerText="Id">
+						<h:outputText value="#{ca.idCategorie}" />
+					</p:column>
+
+					<p:column headerText="Nom">
+						<h:outputText value="#{ca.nomCategorie}" />
+					</p:column>
+
+					<p:column headerText="Description">
+						<h:outputText value="#{ca.description}" />
+					</p:column>
+
+					<p:column headerText="Photo">
+						<h:graphicImage value="#{ca.image}" styleClass="image" />
+					</p:column>
+
+					<p:column headerText="Modifier">
+						<h:commandLink action="#{caMB.updateLinkCategory}"
+							title="modifier la catégorie">
+							<h:graphicImage value="resources/images/edit.png" />
+							<f:setPropertyActionListener value="#{ca}"
+								target="#{caMB.categorie}"></f:setPropertyActionListener>
+						</h:commandLink>
+
+						<h:commandLink action="#{caMB.getCategory}"
+							title="afficher la catégorie">
+							<h:graphicImage value="resources/images/Search_26px.png" />
+							<f:setPropertyActionListener value="#{ca}"
+								target="#{caMB.categorie}"></f:setPropertyActionListener>
+						</h:commandLink>
+
+						<h:commandLink action="#{caMB.deleteCategory}"
+							title="supprimer la catégorie">
+							<h:graphicImage value="resources/images/Trash Can_26px.png" />
+							<f:setPropertyActionListener value="#{ca.idCategorie}"
+								target="#{caMB.categorie.idCategorie}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</p:column>
+
+				</p:dataTable>
+				<br/>
+				<br/>
+				<p:commandButton value="Déconnexion" action="#{aMB.deconnexion}"
+					style="margin-right:20px; position:relative;left:45%;" ajax="false">
+
+				</p:commandButton>
+
+			</h:form>
+
+		</ui:define>
+
+
+		<ui:define name="monFooter">
+			<ui:insert>
+				<ui:include src="/templates/footer.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Modifier un produit</title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/templates/layout.xhtml">
+
+		<ui:define name="monHeader">
+			<ui:insert>
+				<ui:include src="/templates/header.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+		<ui:define name="monBody">
+
+			<h:form enctype="multipart/form-data">
+				
+<p:fieldset legend="Modifier un produit" style="width:50%; position:relative; left:25%">
+
+					<h:inputHidden value="#{pMB.produit.idProduit}" />
+					
+					
+					
+Designation : <h:inputText value="#{pMB.produit.designation}" /><br/><br/>
+Description : <h:inputText value="#{pMB.produit.description}" /><br/><br/>
+Prix :<p:inputText value="#{pMB.produit.prix}" /><br/><br/>
+Quantité : <p:inputText value="#{pMB.produit.quantite}" /><br/><br/>
+Caétgorie : <h:selectOneMenu value="#{pMB.categorie.idCategorie}">
+					<f:selectItems value="#{caMB.listeCategories}" var="ca" itemLabel="#{ca.nomCategorie}"
+					
+					itemValue="#{ca.idCategorie}"/>
+					
+					</h:selectOneMenu>
+					<br/><br/>
+Image : <h:graphicImage value="#{p.image}" styleClass="image" />
+
+
+<p:fileUpload id="image" value="#{pMB.file}" mode="simple"
+						skinSimple="true"  label="Choisir une image"/><br/><br/>
+					<p:commandButton value="Modifier un produit"
+						action="#{pMB.updateProduct}" style="margin-right:20px"
+						ajax="false" update="growl" />
+				</p:fieldset>
+				<br/>
+				<br/>
+				<p:commandButton value="Retour à votre espace client"
+						action="#{pMB.espaceclient}" style="margin-right:20px; position:relative; left:37.5%; width:25%"
+						ajax="false" update="growl" />
+				
+			</h:form>
+
+
+		</ui:define>
+
+		<ui:define name="monFooter">
+			<ui:insert>
+				<ui:include src="/templates/footer.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

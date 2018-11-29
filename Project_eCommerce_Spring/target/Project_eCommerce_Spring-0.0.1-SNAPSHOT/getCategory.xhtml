@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Ajouter une catégorie</title>
+</h:head>
+
+
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+
+		<ui:define name="monHeader">
+			<ui:insert>
+				<ui:include src="/templates/header.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+		<ui:define name="monBody">
+
+			<h:form enctype="multipart/form-data">
+
+				<p:fieldset legend="Description de la catégorie">
+
+					<p:dataTable var="" value="">
+						<p:column headerText="Id">
+							<h:outputText value="#{caMB.categorie.idCategorie}" />
+						</p:column>
+
+						<p:column headerText="Nom">
+							<h:outputText value="#{caMB.categorie.nomCategorie}" />
+						</p:column>
+
+						<p:column headerText="Description">
+							<h:outputText value="#{caMB.categorie.description}" />
+						</p:column>
+
+						<p:column headerText="Photo">
+							<h:graphicImage value="#{caMB.categorie.image}"
+								styleClass="image" />
+						</p:column>
+
+
+					</p:dataTable>
+				</p:fieldset>
+			</h:form>
+		</ui:define>
+		<ui:define name="monFooter">
+			<ui:insert>
+				<ui:include src="/templates/footer.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+	</ui:composition>
+
+
+
+</h:body>
+</html>

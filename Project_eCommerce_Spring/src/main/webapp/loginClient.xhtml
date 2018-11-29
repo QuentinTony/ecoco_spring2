@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Bienvenue dans votre espace Client</title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/templates/layout.xhtml">
+
+		<ui:define name="monHeader">
+			<ui:insert>
+				<ui:include src="/templates/header.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+		<ui:define name="monBody">
+
+			<h:form>
+				<p:fieldset legend="Accéder à votre espace client"
+					style="width:40%; position:relative; left:30%">
+					<h:panelGrid columns="1" cellspacing="10">
+						<p:outputLabel value="Mail" />
+						<p:inputText id="input1" value="#{clMB.client.mail}" />
+
+						<p:outputLabel value="Mot de passe" />
+						<p:password id="input2" value="#{clMB.client.mdp}" />
+
+						<p:commandButton value="Se connecter" action="#{clMB.isExist}"
+							ajax="false" />
+
+						<p:outputLabel
+							value="Vous n'avez pas encore votre espace client, cliquer ici :" />
+
+						<p:commandButton value="S'enregistrer"
+							action="#{clMB.addLinkClient}" ajax="false" />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
+
+		</ui:define>
+
+		<ui:define name="monFooter">
+			<ui:insert>
+				<ui:include src="/templates/footer.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

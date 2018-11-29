@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Bienvenue dans votre espace client</title>
+</h:head>
+
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+
+		<ui:define name="monHeader">
+			<ui:insert>
+				<ui:include src="/templates/header.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+		<ui:define name="monBody">
+
+			<h:form>
+				<p:dataTable id="dataTableCategories" var="p" value="#{pMB.product}">
+					<p:column headerText="Id">
+						<h:outputText value="#{p.id}" />
+					</p:column>
+
+					<p:column headerText="Designation">
+						<h:outputText value="#{p.designation}" />
+					</p:column>
+
+					<p:column headerText="Description">
+						<h:outputText value="#{p.description}" />
+					</p:column>
+
+					<p:column headerText="Prix">
+						<h:outputText value="#{p.prix}" />
+					</p:column>
+
+					<p:column headerText="Quantité">
+						<h:outputText value="#{p.quantite}" />
+					</p:column>
+
+					<p:column headerText="Photo">
+						<h:graphicImage value="#{p.image}" styleClass="image" />
+					</p:column>
+				</p:dataTable>
+
+				<p:commandButton value="Ajouter un produit"
+					action="#{pMB.addLinkProduct}" style="margin-right:20px;"/>
+					
+					<br />
+				<br />
+				<p:commandButton id="btonret" action="accueilSite.xhmtl"
+					value="Retour à l'accueil"></p:commandButton>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="monFooter">
+			<ui:insert>
+				<ui:include src="/templates/footer.xhtml"></ui:include>
+			</ui:insert>
+		</ui:define>
+
+	</ui:composition>
+
+</h:body>
+
+</html>

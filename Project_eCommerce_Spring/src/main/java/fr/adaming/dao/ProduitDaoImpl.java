@@ -38,7 +38,12 @@ public class ProduitDaoImpl implements IProduitDao {
 		String req = "SELECT p FROM Produit p WHERE p.client.id=:pIdcl";
 		Query query = s.createQuery(req);
 		query.setParameter("pIdcl", cl.getId());
-		return query.list();
+		List<Produit> liste = query.list();
+		
+		for(Produit p : liste) {
+			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
+		}
+		return liste;
 	}
 
 	@Override
@@ -144,7 +149,12 @@ public class ProduitDaoImpl implements IProduitDao {
 
 		String req = "SELECT p FROM Produit p ";
 		Query query = s.createQuery(req);
-		return query.list();
+		List<Produit> liste = query.list();
+		
+		for (Produit p : liste) {
+			p.setImage("data:image/png;base64," + Base64.encodeBase64String(p.getPhoto()));
+		}
+		return liste;
 	}
 
 }

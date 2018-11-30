@@ -183,6 +183,10 @@ public class CommandeManagedBean implements Serializable {
 					tabVerif[i] = prService.updateProduit(pIn);
 
 					if (tabVerif[i] != 0) {
+						Produit pOut = prService.getProduit(pIn);
+						if(pOut.getQuantite()<=0) {
+							prService.deleteProduct1(pOut);
+						}
 						verif = 1;
 					} else {
 						verif = 0;

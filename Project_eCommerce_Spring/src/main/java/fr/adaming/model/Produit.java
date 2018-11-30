@@ -32,6 +32,8 @@ public class Produit {
 	private int quantite;
 	private boolean selectionne;
 	private String lien;
+	private String textePub;
+	private boolean pub;
 	@Lob
 	private byte[] photo;
 	@Transient
@@ -145,6 +147,22 @@ public class Produit {
 
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+
+	public boolean getPub() {
+		return pub;
+	}
+
+	public void setPub(boolean pub) {
+		this.pub = pub;
+	}
+
+	public String getTextePub() {
+		return textePub;
+	}
+
+	public void setTextePub(String textePub) {
+		this.textePub = textePub;
 	}
 
 	public Categorie getCategorie() {

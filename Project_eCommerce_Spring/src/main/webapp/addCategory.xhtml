@@ -21,22 +21,35 @@
 
 		<ui:define name="monBody">
 			<h:form enctype="multipart/form-data">
-				<p:growl id="growl" life="3000" autoUpdate="true" showDetail="true" />
-				<p:fieldset legend="Ajouter une catégorie">
-Nom : <h:inputText value="#{caMB.categorie.nomCategorie}" />
-<br/>
-<br/>
-Description : <h:inputTextarea value="#{caMB.categorie.description}" />
-  <br/>
-<br/>   
-Photo :    <p:fileUpload id="image" value="#{caMB.file}" mode="simple"
-						skinSimple="true" />
+
+				<p:fieldset legend="Ajouter une catégorie" styleClass="formStyle">
+					<p:outputLabel value="Nom" />
+					<br />
+					<p:inputText value="#{caMB.categorie.nomCategorie}" required="true" />
+					<br />
+					<br />
+					<p:outputLabel value="Description" />
+					<br />
+					<p:inputTextarea value="#{pMB.produit.description}" rows="6"
+						maxlength="200" placeholder="Description (200 caractères maximum)"
+						cols="42" counter="display"
+						counterTemplate="{0} caractères restants" />
+					<br />
+					<h:outputText id="display" style="font-size:75%" />
+					<br />
+					<br />
+					<p:outputLabel value="Photo" />
+					<br />
+					<p:fileUpload id="image" value="#{caMB.file}" mode="simple"
+						skinSimple="true" required="true" />
 				</p:fieldset>
-<br/>
-<br/>
+
+				<br />
+				<br />
 				<p:commandButton value="Ajouter une catégorie"
-					action="#{caMB.addCategory}" style="margin-right:20px"
-					update="growl" ajax="false" />
+					action="#{caMB.addCategory}"
+					style="margin-right:auto;margin-left:auto;" update="growl"
+					ajax="false" />
 			</h:form>
 		</ui:define>
 		<ui:define name="monFooter">

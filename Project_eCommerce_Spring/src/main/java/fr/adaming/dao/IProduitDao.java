@@ -33,6 +33,8 @@ public interface IProduitDao {
 	public List<Produit> getProductbyCatDouble(double d1, double d2, Categorie ca);
 	
 	public List<Produit> getProductbyCatSaisieDouble(double d1, double d2, String saisie, Categorie ca);
+	
+	public List<Produit> getProductByPub();
 
 	public List<Produit> getAllProducts();
 }

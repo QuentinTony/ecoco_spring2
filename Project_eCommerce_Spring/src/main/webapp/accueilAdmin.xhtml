@@ -64,12 +64,18 @@
 				</p:dataTable>
 				<br />
 				<br />
+				<p:commandButton value="Modifier le bandeau publicitaire"
+					action="updatePub.xhtml"
+					style="margin-right:20px; position:relative;left:45%;" ajax="false" />
+				<br />
+				<br />
 				<p:commandButton value="Déconnexion" action="#{aMB.deconnexion}"
 					style="margin-right:20px; position:relative;left:45%;" ajax="false">
 
 				</p:commandButton>
 
-				<p:confirmDialog global="true" >
+
+				<p:confirmDialog global="true">
 					<p:commandButton value="Oui" type="button"
 						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
 					<p:commandButton value="Non" type="button"

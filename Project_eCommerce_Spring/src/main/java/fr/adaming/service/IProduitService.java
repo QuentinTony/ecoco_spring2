@@ -13,6 +13,8 @@ public interface IProduitService {
 	public List<Produit> getProductbyClient(Client cl);
 
 	public int deleteProduct(Produit p, Client cl);
+	
+	public int deleteProduct1(Produit p);
 
 	public Produit getProduit(Produit p, Client cl);
 
@@ -37,6 +39,8 @@ public interface IProduitService {
 	public List<Produit> getProductbyCatDouble(double d1, double d2, Categorie ca);
 
 	public List<Produit> getProductbyCatSaisieDouble(double d1, double d2, String saisie, Categorie ca);
+
+	public List<Produit> getProductByPub();
 
 	public List<Produit> getAllProducts();
 

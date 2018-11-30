@@ -19,6 +19,12 @@
 	height: 120px;
 }
 
+.searchbarStyle{
+	color:green;
+	
+}
+
+
 .image {
 	width: 60px;
 	height: 60px;
@@ -81,7 +87,7 @@
 
 .logo {
 	position: absolute;
-	left: 10%;
+	left: 50%;
 	top: 8%;
 }
 

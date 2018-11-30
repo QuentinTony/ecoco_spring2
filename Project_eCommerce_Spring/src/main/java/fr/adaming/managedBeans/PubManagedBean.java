@@ -27,10 +27,12 @@ public class PubManagedBean implements Serializable {
 	// attributs
 
 	private List<Produit> listeProduits;
+	private List<Produit> listeProduitsPub;
 	private List<Produit> listeProduitsChoisis;
 	HttpSession maSession;
 	private String saisie;
 	private String textePublicite;
+	private Produit produit;
 
 	// constructeur vide
 
@@ -41,8 +43,7 @@ public class PubManagedBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		List<Produit> liste = prService.getProductByPub();
-		maSession.setAttribute("listeProduitsPub", liste);
+		listeProduitsPub = prService.getProductByPub();
 	}
 
 	// getter setter
@@ -53,6 +54,14 @@ public class PubManagedBean implements Serializable {
 
 	public void setListeProduits(List<Produit> listeProduits) {
 		this.listeProduits = listeProduits;
+	}
+
+	public List<Produit> getListeProduitsPub() {
+		return listeProduitsPub;
+	}
+
+	public void setListeProduitsPub(List<Produit> listeProduitsPub) {
+		this.listeProduitsPub = listeProduitsPub;
 	}
 
 	public String getTextePublicite() {
@@ -69,6 +78,14 @@ public class PubManagedBean implements Serializable {
 
 	public void setSaisie(String saisie) {
 		this.saisie = saisie;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
 	public List<Produit> getListeProduitsChoisis() {
@@ -91,11 +108,11 @@ public class PubManagedBean implements Serializable {
 	public String ajouterDansBandeau() {
 		int verif = 0;
 		List<Produit> liste = prService.getProductByPub();
-		
+
 		if (liste.size() + listeProduitsChoisis.size() < 4) {
-			
+
 			for (Produit pr : listeProduitsChoisis) {
-				
+
 				Produit prOut = prService.getProduit(pr);
 				prOut.setPub(true);
 				if (!textePublicite.equals("")) {
@@ -115,7 +132,7 @@ public class PubManagedBean implements Serializable {
 			}
 
 			if (verif != 0) {
-				
+				listeProduitsPub = prService.getProductByPub();
 				return "updatePub";
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null,
@@ -130,12 +147,21 @@ public class PubManagedBean implements Serializable {
 		}
 
 	}
-	
+
 	public String deleteLigne() {
-		
-		
-		
-		return "updatePub";
+		Produit pOut = prService.getProduit(produit);
+		pOut.setPub(false);
+
+		int verif = prService.updateProduit(pOut);
+
+		if (verif != 0) {
+			listeProduitsPub = prService.getProductByPub();
+			return "updatePub";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Suppression du bandeau échouée"));
+			return "updatePub";
+		}
+
 	}
 
 }

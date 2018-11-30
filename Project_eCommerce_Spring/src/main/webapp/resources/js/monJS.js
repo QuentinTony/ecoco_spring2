@@ -1,6 +1,6 @@
 function togglePanier(){
 	
-	 $('#panier').toggle();
+	 $('#tablePanier').toggle();
 	
 }
 
@@ -18,4 +18,8 @@ function toggleCat(){
 	
 	$('#cat').toggle();
 	
+}
+
+function toggleField(){
+	$('#panier').toggle();
 }

@@ -21,34 +21,44 @@
 		</ui:define>
 
 		<ui:define name="monBody">
-		<p:carousel  autoPlayInterval="1" effect="easeInStrong"  itemStyle="border:5px;height:200px;width:1250px;" 
-		 headerText="ACTUALITES" style="margin-bottom:50px">
-        <p:tab title="Zelda is back ">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage library="images" name="zeldagoodies.jpg" styleClass="image2" />
-                <h:outputText
-                    value="Les accessoires et goodies Zelda sont de retour. Venez en profiter" />
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="Vos jeux préférés">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage library="images" name="jeuxvideo.jpg" styleClass="image2" />
-                <h:outputText value="Ils sont de retour et ils sont vraiment pas content." />
-            </h:panelGrid>
-        </p:tab>
-        <p:tab title="La réalité virtuelle pour de vrai!">
-            <h:panelGrid columns="2" cellpadding="10">
-                <p:graphicImage library="images" name="vracc.jpg" styleClass="image2" />
-                <h:outputText value="Tout le nécessaire pour vous immerger dans le monde féérique des jeux vidéos." />
-            </h:panelGrid>
-        </p:tab>
-    </p:carousel>
-		
-			<h:graphicImage id="togglePanier"
+			<p:carousel id="carousel" numVisible="1"  autoPlayInterval="500"
+				itemStyle="border:5px;height:200px;width:1205px;" itemStyleClass=".ui-carousel-item"
+				headerText="ACTUALITES" style="margin-bottom:20px;" circular="true">
+				<p:tab title="Zelda is back " >
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage library="images" name="zeldagoodies.jpg"
+							styleClass="image2" />
+						<h:outputText
+							value="Les accessoires et goodies Zelda sont de retour. Venez en profiter" />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Vos jeux préférés">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage library="images" name="jeuxvideo.jpg"
+							styleClass="image2" />
+						<h:outputText
+							value="Ils sont de retour et ils sont vraiment pas content." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="La réalité virtuelle pour de vrai!">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage library="images" name="vracc.jpg"
+							styleClass="image2" />
+						<h:outputText
+							value="Tout le nécessaire pour vous immerger dans le monde féérique des jeux vidéos." />
+					</h:panelGrid>
+				</p:tab>
+			</p:carousel>
+
+			<p:growl id="paniers" >
+			<p:fieldset legend="Panier" styleClass="fieldsetStyle"  >
+			        <p:ajax event="toggle"  listener="#{paMB.onToggle}" update="paniers"  />
+				<h:graphicImage id="togglePanier"
 				value="resources/images/togglePanier.png" onclick="togglePanier()"
 				onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
-				title="Afficher/Cacher le panier" style="position:absolute; left:12%; top:35%"/>
-			<p:fieldset legend="Panier" styleClass="fieldsetStyle" id="panier">
+				title="Afficher/Cacher le panier"
+				style="margin-left:30px" />
+		
 				<h:form id="tablePanier"
 					rendered="#{not empty sessionScope.paSession.listeLigneCommandes}">
 					<p:dataTable var="lc"
@@ -81,7 +91,7 @@
 						<p:outputLabel value="Prix total du panier : " for="prixtotal" />
 						<h:outputText id="prixtotal"
 							value="#{sessionScope.paSession.prixTotal}€" />
-							<br/>
+						<br />
 						<p:commandButton id="bton" value="Passer la commande"
 							action="#{coMB.passerCommande1}" />
 
@@ -89,14 +99,15 @@
 
 				</h:form>
 			</p:fieldset>
+			</p:growl>
 			<br />
 			<h:form>
-				
-				<h:panelGrid columns="3" >
+
+				<h:panelGrid columns="3">
 					<p:outputLabel value="Prix minimum" />
 					<p:outputLabel value="Prix maximum" />
 					<p:outputLabel />
-					<p:spinner value="#{pMB.prix1}" ></p:spinner>
+					<p:spinner value="#{pMB.prix1}"></p:spinner>
 					<p:spinner value="#{pMB.prix2}"></p:spinner>
 					<h:commandButton image="resources/images/Search_26px.png"
 						action="#{pMB.getProductbyPrix}" />

@@ -21,33 +21,17 @@
 		</ui:define>
 
 		<ui:define name="monBody">
-			<p:carousel id="carousel" numVisible="1"  autoPlayInterval="500"
+			<p:carousel id="carousel" value="#{pubMB.listeProduitsPub}" numVisible="1"  autoPlayInterval="500" var="pub"
 				itemStyle="border:5px;height:200px;width:1205px;" itemStyleClass=".ui-carousel-item"
 				headerText="ACTUALITES" style="margin-bottom:20px;" circular="true">
-				<p:tab title="Zelda is back " >
+				<p:tab  >
 					<h:panelGrid columns="2" cellpadding="10">
-						<p:graphicImage library="images" name="zeldagoodies.jpg"
-							styleClass="image2" />
+						<h:graphicImage value="#{pub.image}" styleClass="image2" />
 						<h:outputText
-							value="Les accessoires et goodies Zelda sont de retour. Venez en profiter" />
+							value="#{pub.textePub}" />
 					</h:panelGrid>
 				</p:tab>
-				<p:tab title="Vos jeux préférés">
-					<h:panelGrid columns="2" cellpadding="10">
-						<p:graphicImage library="images" name="jeuxvideo.jpg"
-							styleClass="image2" />
-						<h:outputText
-							value="Ils sont de retour et ils sont vraiment pas content." />
-					</h:panelGrid>
-				</p:tab>
-				<p:tab title="La réalité virtuelle pour de vrai!">
-					<h:panelGrid columns="2" cellpadding="10">
-						<p:graphicImage library="images" name="vracc.jpg"
-							styleClass="image2" />
-						<h:outputText
-							value="Tout le nécessaire pour vous immerger dans le monde féérique des jeux vidéos." />
-					</h:panelGrid>
-				</p:tab>
+				
 			</p:carousel>
 
 			<p:growl id="paniers" >

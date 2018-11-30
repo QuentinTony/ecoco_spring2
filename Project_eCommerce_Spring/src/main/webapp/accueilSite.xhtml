@@ -21,6 +21,29 @@
 		</ui:define>
 
 		<ui:define name="monBody">
+		<p:carousel  autoPlayInterval="1" effect="easeInStrong"  itemStyle="border:5px;height:200px;width:1250px;" 
+		 headerText="ACTUALITES" style="margin-bottom:50px">
+        <p:tab title="Zelda is back ">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage library="images" name="zeldagoodies.jpg" styleClass="image2" />
+                <h:outputText
+                    value="Les accessoires et goodies Zelda sont de retour. Venez en profiter" />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Vos jeux préférés">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage library="images" name="jeuxvideo.jpg" styleClass="image2" />
+                <h:outputText value="Ils sont de retour et ils sont vraiment pas content." />
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="La réalité virtuelle pour de vrai!">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage library="images" name="vracc.jpg" styleClass="image2" />
+                <h:outputText value="Tout le nécessaire pour vous immerger dans le monde féérique des jeux vidéos." />
+            </h:panelGrid>
+        </p:tab>
+    </p:carousel>
+		
 			<h:graphicImage id="togglePanier"
 				value="resources/images/togglePanier.png" onclick="togglePanier()"
 				onmouseover="animImgPanier()" onmouseout="animImgPanier1()"

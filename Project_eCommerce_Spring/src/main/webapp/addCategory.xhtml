@@ -24,12 +24,16 @@
 				<p:growl id="growl" life="3000" autoUpdate="true" showDetail="true" />
 				<p:fieldset legend="Ajouter une catégorie">
 Nom : <h:inputText value="#{caMB.categorie.nomCategorie}" />
-description : <h:inputTextarea value="#{caMB.categorie.description}" />
-     
-photo :    <p:fileUpload id="image" value="#{caMB.file}" mode="simple"
+<br/>
+<br/>
+Description : <h:inputTextarea value="#{caMB.categorie.description}" />
+  <br/>
+<br/>   
+Photo :    <p:fileUpload id="image" value="#{caMB.file}" mode="simple"
 						skinSimple="true" />
 				</p:fieldset>
-
+<br/>
+<br/>
 				<p:commandButton value="Ajouter une catégorie"
 					action="#{caMB.addCategory}" style="margin-right:20px"
 					update="growl" ajax="false" />

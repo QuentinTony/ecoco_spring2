@@ -25,8 +25,8 @@
 				legend="Produits apparaissant sur le bandeau publicitaire"
 				styleClass="fieldsetStyle" id="panier">
 				<h:form id="tablePanier"
-					rendered="#{not empty sessionScope.listeProduitsPub}">
-					<p:dataTable var="pr" value="#{sessionScope.listeProduitsPub}">
+					rendered="#{not empty pubMB.listeProduitsPub}">
+					<p:dataTable var="pr" value="#{pubMB.listeProduitsPub}">
 
 						<p:column headerText="Designation">
 							<h:outputText value="#{pr.designation}" />

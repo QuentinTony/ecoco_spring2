@@ -21,11 +21,12 @@
 		</ui:define>
 
 		<ui:define name="monBody">
-			<h:graphicImage id="togglePanier"
-				value="resources/images/togglePanier.png" onclick="togglePanier()"
-				onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
-				title="Afficher/Cacher le panier" style="position:absolute; left:12%; top:35%" />
+
 			<p:fieldset legend="Panier" styleClass="fieldsetStyle" id="panier">
+				<h:graphicImage id="togglePanier"
+					value="resources/images/togglePanier.png" onclick="togglePanier()"
+					onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
+					title="Afficher/Cacher le panier" style="margin-left:30px" />
 				<h:form id="tablePanier"
 					rendered="#{not empty sessionScope.paSession.listeLigneCommandes}">
 					<p:dataTable var="lc"
@@ -90,12 +91,16 @@ Liste des produits de la catégorie #{sessionScope.caSession.nomCategorie} inclu
 								<h:graphicImage value="#{pr.image}" styleClass="image2" />
 								<f:setPropertyActionListener value="#{pr}"
 									target="#{pMB.produit}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{3}"
+									target="#{navMB.indiceNav}"></f:setPropertyActionListener>
 							</p:commandLink>
 							<p:commandLink action="#{pMB.afficherProduit}" ajax="false"
 								title="afficher le produit">
 								<h:outputText value="#{pr.designation}" styleClass="image2" />
 								<f:setPropertyActionListener value="#{pr}"
 									target="#{pMB.produit}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{3}"
+									target="#{navMB.indiceNav}"></f:setPropertyActionListener>
 							</p:commandLink>
 							<h:outputText value="Stock : #{pr.quantite}" />
 							<h:outputText value="Prix : #{pr.prix}€" />

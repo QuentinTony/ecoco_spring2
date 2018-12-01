@@ -19,13 +19,12 @@
 		</ui:define>
 
 		<ui:define name="monBody">
-			
+
 			<p:fieldset legend="Panier" styleClass="fieldsetStyle" id="panier">
-			<h:graphicImage id="togglePanier"
-				value="resources/images/togglePanier.png" onclick="togglePanier()"
-				onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
-				title="Afficher/Cacher le panier"
-				style="margin-left:30px"  />
+				<h:graphicImage id="togglePanier"
+					value="resources/images/togglePanier.png" onclick="togglePanier()"
+					onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
+					title="Afficher/Cacher le panier" style="margin-left:30px" />
 				<h:form id="tablePanier"
 					rendered="#{not empty sessionScope.paSession.listeLigneCommandes}">
 					<p:dataTable var="lc"
@@ -68,43 +67,44 @@
 			<br />
 
 			<h:form>
-			<p:fieldset legend="Recherche Avancée"
+				<p:fieldset legend="Recherche Avancée"
 					style="width:40%; position:relative; left:30%">
-				<h:panelGrid columns="3" cellspacing="10">
-					<p:outputLabel value="Mot clé" />
-					<p:outputLabel />
-					<p:outputLabel />
-					<p:inputText value="#{pMB.saisie}"
-						placeholder="Rechercher un produit" />
+					<h:panelGrid columns="3" cellspacing="10">
+						<p:outputLabel value="Mot clé" />
+						<p:outputLabel />
+						<p:outputLabel />
+						<p:inputText value="#{pMB.saisie}"
+							placeholder="Rechercher un produit" />
 
-					<p:outputLabel />
-					<p:outputLabel />
+						<p:outputLabel />
+						<p:outputLabel />
 
-					<p:outputLabel value="Prix minimum" />
-					<p:outputLabel value="Prix maximum" />
-					<p:outputLabel />
-					<p:spinner value="#{pMB.prix1}"></p:spinner>
-					<p:spinner value="#{pMB.prix2}"></p:spinner>
-				</h:panelGrid>
-				<br />
-				<h:panelGrid id="cat" columns="1">
-					<p:outputLabel value="Cocher pour chercher par catégorie" />
-					<h:panelGroup >
-						<p:selectBooleanCheckbox value="#{pMB.indice}" style="padding:15px;">
-							<f:ajax render="cat" event="change" />
-						</p:selectBooleanCheckbox>
+						<p:outputLabel value="Prix minimum" />
+						<p:outputLabel value="Prix maximum" />
+						<p:outputLabel />
+						<p:spinner value="#{pMB.prix1}"></p:spinner>
+						<p:spinner value="#{pMB.prix2}"></p:spinner>
+					</h:panelGrid>
+					<br />
+					<h:panelGrid id="cat" columns="1">
+						<p:outputLabel value="Cocher pour chercher par catégorie" />
+						<h:panelGroup>
+							<p:selectBooleanCheckbox value="#{pMB.indice}"
+								style="padding:15px;">
+								<f:ajax render="cat" event="change" />
+							</p:selectBooleanCheckbox>
 
-						<h:selectOneMenu value="#{pMB.categorie.idCategorie}"
-							style="padding:6px;border-radius:10px;">
-							<f:selectItems value="#{caMB.listeCategories}" var="ca"
-								itemLabel="#{ca.nomCategorie}" itemValue="#{ca.idCategorie}" />
+							<h:selectOneMenu value="#{pMB.categorie.idCategorie}"
+								style="padding:6px;border-radius:10px;">
+								<f:selectItems value="#{caMB.listeCategories}" var="ca"
+									itemLabel="#{ca.nomCategorie}" itemValue="#{ca.idCategorie}" />
 
-						</h:selectOneMenu>
-					</h:panelGroup>
-					<br/>
-					<h:commandButton value="Rechercher" action="#{pMB.rechAvancee}"
-						styleClass="boutonStyle" />
-				</h:panelGrid>
+							</h:selectOneMenu>
+						</h:panelGroup>
+						<br />
+						<h:commandButton value="Rechercher" action="#{pMB.rechAvancee}"
+							styleClass="boutonStyle" />
+					</h:panelGrid>
 				</p:fieldset>
 			</h:form>
 			<br />
@@ -122,12 +122,16 @@ Liste des produits recherchés </f:facet>
 								<h:graphicImage value="#{pr.image}" styleClass="image2" />
 								<f:setPropertyActionListener value="#{pr}"
 									target="#{pMB.produit}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{5}"
+									target="#{navMB.indiceNav}"></f:setPropertyActionListener>
 							</p:commandLink>
 							<p:commandLink action="#{pMB.afficherProduit}" ajax="false"
 								title="afficher le produit">
 								<h:outputText value="#{pr.designation}" styleClass="image2" />
 								<f:setPropertyActionListener value="#{pr}"
 									target="#{pMB.produit}"></f:setPropertyActionListener>
+								<f:setPropertyActionListener value="#{5}"
+									target="#{navMB.indiceNav}"></f:setPropertyActionListener>
 							</p:commandLink>
 							<h:outputText value="Stock : #{pr.quantite}" />
 							<h:outputText value="Prix : #{pr.prix}€" />

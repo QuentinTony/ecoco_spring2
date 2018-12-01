@@ -21,12 +21,12 @@
 		</ui:define>
 
 		<ui:define name="monBody">
-			<h:graphicImage id="togglePanier"
-				value="resources/images/togglePanier.png" onclick="togglePanier()"
-				onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
-				title="Afficher/Cacher le panier"
-				style="position:absolute; left:12%; top:35%" />
+
 			<p:fieldset legend="Panier" styleClass="fieldsetStyle" id="panier">
+				<h:graphicImage id="togglePanier"
+					value="resources/images/togglePanier.png" onclick="togglePanier()"
+					onmouseover="animImgPanier()" onmouseout="animImgPanier1()"
+					title="Afficher/Cacher le panier" style="margin-left:30px" />
 				<h:form id="tablePanier"
 					rendered="#{not empty sessionScope.paSession.listeLigneCommandes}">
 					<p:dataTable var="lc"
@@ -87,7 +87,8 @@
 							<br />
 							<h:outputText value="Prix : #{sessionScope.prSession.prix}€" />
 							<br />
-							<a href="#{sessionScope.prSession.lien}" target="blank" title="Plus de détails">#{sessionScope.prSession.lien}</a>
+							<a href="#{sessionScope.prSession.lien}" target="blank"
+								title="Plus de détails">#{sessionScope.prSession.lien}</a>
 						</h:panelGroup>
 						<h:panelGroup>
 							<h:commandButton image="resources/images/addProduit.png"
@@ -110,8 +111,9 @@
 				<br />
 			</h:form>
 			<h:form>
-				<p:commandButton id="btonret" action="#{paMB.afficherAccueil}"
-					value="Retour à l'accueil" ajax="false"></p:commandButton>
+				<p:commandButton id="btonret" action="#{navMB.retour}"
+					value="Retour" ajax="false">
+				</p:commandButton>
 
 			</h:form>
 

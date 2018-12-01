@@ -23,13 +23,19 @@
 	<h:form enctype="multipart/form-data">
 
 		<p:fieldset legend="Modifier une catégorie">
-Id : <h:inputHidden value="#{caMB.categorie.idCategorie}" />
+<h:inputHidden value="#{caMB.categorie.idCategorie}" />
+
 Nom : <h:inputText value="#{caMB.categorie.nomCategorie}" />
-description : <h:inputText value="#{caMB.categorie.description}" />
-photo : <p:fileUpload id="image" value="#{caMB.file}" mode="simple"
+<br/>
+<br/>
+Description : <h:inputText value="#{caMB.categorie.description}" />
+<br/>
+<br/>
+Photo : <p:fileUpload id="image" value="#{caMB.file}" mode="simple"
 				skinSimple="true" />
 
-
+<br/>
+<br/>
 		</p:fieldset>
 		<p:commandButton value="Modifier une catégorie"
 			action="#{caMB.updateCategory}" style="margin-right:20px" ajax="false" />

@@ -20,8 +20,14 @@
 
 		<ui:define name="monBody">
 			<h:form>
-				<p:commandButton value="Ajouter une catégorie"
-					action="#{caMB.addLinkCategory}" style="margin-right:20px;" />
+				<h:panelGrid columns="2" cellspacing="10">
+					<p:commandButton value="Ajouter une catégorie"
+						action="#{caMB.addLinkCategory}" style="margin-right:20px;" />
+					<p:commandButton value="Modifier le bandeau publicitaire"
+						action="updatePub.xhtml"
+						style="margin-right:20px; position:relative;left:45%;"
+						ajax="false" />
+				</h:panelGrid>
 				<br />
 				<br />
 				<p:dataTable id="tableCat" var="ca" value="#{caMB.listeCategories}">
@@ -62,11 +68,6 @@
 					</p:column>
 
 				</p:dataTable>
-				<br />
-				<br />
-				<p:commandButton value="Modifier le bandeau publicitaire"
-					action="updatePub.xhtml"
-					style="margin-right:20px; position:relative;left:45%;" ajax="false" />
 				<br />
 				<br />
 				<p:commandButton value="Déconnexion" action="#{aMB.deconnexion}"
